@@ -8,25 +8,31 @@ import java.util.List;
 @Table(name = "user_availability")
 public class UserDbEntry {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     @Column(name = "user_id")
-    private long id;
+    private long userId;
+
+    @Column(name = "server_id")
+    private long serverId;
 
     @ElementCollection
     @CollectionTable(name = "user_events", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "event_name")
-    private List<String> eventNames;
+    private List<Long> roleIds;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "user_id")
     private List<TimeFrame> timeFrames;
 
-    // Constructors, getters, and setters
+    // Required no-arg constructor
     public UserDbEntry() {
     }
 
-    public UserDbEntry(long id, List<String> eventNames, List<TimeFrame> timeFrames) {
+    public UserDbEntry(int id, List<Long> roleIds, List<TimeFrame> timeFrames) {
         this.id = id;
-        this.eventNames = eventNames;
+        this.roleIds = roleIds;
         this.timeFrames = timeFrames;
     }
 
@@ -34,16 +40,16 @@ public class UserDbEntry {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public List<String> getEventNames() {
-        return eventNames;
+    public List<Long> getRoleIds() {
+        return roleIds;
     }
 
-    public void setEventNames(List<String> eventNames) {
-        this.eventNames = eventNames;
+    public void setRoleIds(List<Long> eventNames) {
+        this.roleIds = eventNames;
     }
 
     public List<TimeFrame> getTimeFrames() {

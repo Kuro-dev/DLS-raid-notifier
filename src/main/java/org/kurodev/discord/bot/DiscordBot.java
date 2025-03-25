@@ -63,6 +63,7 @@ public class DiscordBot implements Runnable {
     }
 
     public void shutdown() {
-        jda.shutdown();
+        if (jda != null)
+            jda.shutdown();
     }
 }

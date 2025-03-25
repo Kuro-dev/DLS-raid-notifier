@@ -3,7 +3,6 @@ package org.kurodev.data.entity;
 
 import jakarta.persistence.*;
 
-import java.time.DayOfWeek;
 import java.time.LocalTime;
 
 @Entity
@@ -15,7 +14,7 @@ public class TimeFrame {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "weekday")
-    private DayOfWeek weekday;
+    private Weekday weekday;
 
     @Column(name = "available_from")
     private LocalTime availableFrom;
@@ -27,17 +26,17 @@ public class TimeFrame {
     public TimeFrame() {
     }
 
-    public TimeFrame(DayOfWeek weekday, LocalTime availableFrom, LocalTime availableTo) {
+    public TimeFrame(Weekday weekday, LocalTime availableFrom, LocalTime availableTo) {
         this.weekday = weekday;
         this.availableFrom = availableFrom;
         this.availableTo = availableTo;
     }
 
-    public DayOfWeek getWeekday() {
+    public Weekday getWeekday() {
         return weekday;
     }
 
-    public void setWeekday(DayOfWeek weekday) {
+    public void setWeekday(Weekday weekday) {
         this.weekday = weekday;
     }
 

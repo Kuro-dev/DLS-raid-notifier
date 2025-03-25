@@ -56,8 +56,7 @@ public class NotificationAdminCommand extends AbstractDiscordCommandImpl {
             return;
         }
         MessageEmbed embed = new EmbedBuilder()
-                .setTitle("Event admin")
-                .setDescription("Click a button below!")
+                .setTitle("Rollen Administration")
                 .build();
 
         Button addBtn = Button.primary(ADD_BUTTON_ID, "Rolle hinzufügen");

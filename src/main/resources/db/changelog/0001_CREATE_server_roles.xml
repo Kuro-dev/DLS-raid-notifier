@@ -4,7 +4,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="1" author="your-username">
+    <changeSet id="1" author="Kuro">
         <sql>
             CREATE TABLE IF NOT EXISTS server_roles
             (

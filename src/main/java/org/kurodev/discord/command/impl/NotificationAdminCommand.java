@@ -21,7 +21,8 @@ import org.springframework.context.ApplicationContext;
 import java.util.List;
 
 /**
- * this is probably redundant now and can be removed later
+ * Notification admin.
+ * Kleines Embed interface mit buttons und selects um Rollen zum auswahlpool (db) hinzuzufügen und zu entfernen.
  */
 @AutoRegister
 public class NotificationAdminCommand extends AbstractDiscordCommandImpl {

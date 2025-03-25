@@ -1,4 +1,4 @@
-package org.kurodev.data.entity;
+package org.kurodev.data.entity.user;
 
 import jakarta.persistence.*;
 
@@ -9,7 +9,7 @@ import java.util.List;
 public class UserDbEntry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "user_id")
     private long userId;
@@ -30,8 +30,9 @@ public class UserDbEntry {
     public UserDbEntry() {
     }
 
-    public UserDbEntry(int id, List<Long> roleIds, List<TimeFrame> timeFrames) {
-        this.id = id;
+    public UserDbEntry(long userId, long serverId, List<Long> roleIds, List<TimeFrame> timeFrames) {
+        this.userId = userId;
+        this.serverId = serverId;
         this.roleIds = roleIds;
         this.timeFrames = timeFrames;
     }
@@ -58,5 +59,21 @@ public class UserDbEntry {
 
     public void setTimeFrames(List<TimeFrame> timeFrames) {
         this.timeFrames = timeFrames;
+    }
+
+    public long getServerId() {
+        return serverId;
+    }
+
+    public void setServerId(long serverId) {
+        this.serverId = serverId;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 }

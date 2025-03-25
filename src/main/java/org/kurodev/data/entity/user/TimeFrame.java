@@ -1,7 +1,8 @@
-package org.kurodev.data.entity;
+package org.kurodev.data.entity.user;
 
 
 import jakarta.persistence.*;
+import org.kurodev.data.entity.Weekday;
 
 import java.time.LocalTime;
 

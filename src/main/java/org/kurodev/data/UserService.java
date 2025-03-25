@@ -1,9 +1,10 @@
 package org.kurodev.data;
 
-import org.kurodev.data.entity.UserDbEntry;
+import org.kurodev.data.entity.user.UserDbEntry;
 import org.kurodev.data.repository.MentionTimeFrameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -22,6 +23,10 @@ public class UserService {
 
     public List<UserDbEntry> getEntriesByUserIdAndServerId(long userId, long serverId) {
         return repository.findAllByUserIdAndServerId(userId, serverId);
+    }
+
+    public UserDbEntry save(UserDbEntry entry) {
+        return repository.save(entry);
     }
 }
 

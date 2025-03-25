@@ -7,3 +7,4 @@ insults.txt
 RPSOutcomes.json
 testEnv
 /.env
+/logs

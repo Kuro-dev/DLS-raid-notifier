@@ -2,8 +2,6 @@ package org.kurodev.discord.bot;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
-import org.kurodev.Main;
-import org.kurodev.config.Setting;
 import org.kurodev.discord.command.AutoRegister;
 import org.kurodev.discord.command.DiscordCommand;
 import org.reflections.Reflections;
@@ -27,7 +25,7 @@ public class DiscordBot implements Runnable {
     public void run() {
         try {
             logger.info("Starting Discord Bot...");
-            jda = JDABuilder.createDefault(Main.SETTINGS.getSetting(Setting.TOKEN)).build();
+            jda = JDABuilder.createDefault(System.getenv("DISCORD_BOT_TOKEN")).build();
             jda.awaitReady();
             registerCommands();
             logger.info("Discord Bot started");

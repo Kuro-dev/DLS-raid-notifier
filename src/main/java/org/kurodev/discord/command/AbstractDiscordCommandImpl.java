@@ -65,7 +65,7 @@ public abstract class AbstractDiscordCommandImpl extends ListenerAdapter impleme
     }
 
     /**
-     * This command has been invoked and can now be used
+     * This command has been invoked by a User
      */
     protected abstract void invoke(SlashCommandInteractionEvent event);
 }

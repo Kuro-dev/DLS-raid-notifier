@@ -17,6 +17,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+/**
+ * Just some average Spring / JPA magic, don't worry about it.
+ */
 @Configuration
 @EnableJpaRepositories(basePackages = "org.kurodev.data")
 @EnableTransactionManagement

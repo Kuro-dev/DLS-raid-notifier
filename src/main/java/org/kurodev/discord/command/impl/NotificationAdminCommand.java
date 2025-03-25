@@ -33,15 +33,11 @@ public class NotificationAdminCommand extends AbstractDiscordCommandImpl {
     private static final String ADD_BUTTON_ID = "add-button";
 
     private static final String REMOVE_BUTTON_ID = "remove-button";
-    private final UserService userService;
     private final MentionService mentionService;
 
     public NotificationAdminCommand() {
         super("notification-admin");
         ApplicationContext context = Main.getSpringContext();
-
-        // Retrieve the service bean
-        this.userService = context.getBean(UserService.class);
         this.mentionService = context.getBean(MentionService.class);
     }
 
@@ -81,6 +77,9 @@ public class NotificationAdminCommand extends AbstractDiscordCommandImpl {
         }
     }
 
+    /**
+     * Message embed aufbauen für das Hinzufügen von Rollen.
+     */
     protected void handleAddNewEvent(ButtonInteractionEvent event) {
         StringSelectMenu.Builder menu = StringSelectMenu.create(EVENT_ADD_SELECT_ID);
         List<Role> roles = event.getGuild().getRoles();
@@ -100,6 +99,9 @@ public class NotificationAdminCommand extends AbstractDiscordCommandImpl {
                 .queue();
     }
 
+    /**
+     * Message embed aufbauen für das Entfernen von Rollen.
+     */
     private void handleRemoval(ButtonInteractionEvent event, Guild guild) {
         MessageEmbed embed = new EmbedBuilder()
                 .setTitle("Rollen entfernen:")
@@ -118,6 +120,9 @@ public class NotificationAdminCommand extends AbstractDiscordCommandImpl {
                 .queue();
     }
 
+    /**
+     * Es wurde mit einem message embed interagiert.
+     */
     @Override
     public void onStringSelectInteraction(StringSelectInteractionEvent event) {
         List<String> values = event.getValues();

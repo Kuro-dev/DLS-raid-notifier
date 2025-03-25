@@ -5,16 +5,26 @@ import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEve
 import net.dv8tion.jda.api.events.interaction.component.StringSelectInteractionEvent;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
 import net.dv8tion.jda.api.interactions.components.selections.StringSelectMenu;
+import org.kurodev.Main;
+import org.kurodev.data.MentionService;
+import org.kurodev.data.UserService;
 import org.kurodev.discord.command.AbstractDiscordCommandImpl;
 import org.kurodev.discord.command.AutoRegister;
+import org.springframework.context.ApplicationContext;
 
 /**
  * Change this functionality to use @mentions instead and just give/take roles depending on the times
  */
 @AutoRegister
 public class SubscribeCommand extends AbstractDiscordCommandImpl {
+    private final MentionService mentionService;
+    private final UserService userService;
+
     public SubscribeCommand() {
         super("subscribe");
+        ApplicationContext context = Main.getSpringContext();
+        this.mentionService = context.getBean(MentionService.class);
+        this.userService = context.getBean(UserService.class);
     }
 
     @Override
@@ -25,7 +35,7 @@ public class SubscribeCommand extends AbstractDiscordCommandImpl {
 
     @Override
     protected void invoke(SlashCommandInteractionEvent event) {
-
+        //TODO actually implement this now.
         EmbedBuilder embed = new EmbedBuilder()
                 .setTitle("Button Menu")
                 .setDescription("Click a button below!");

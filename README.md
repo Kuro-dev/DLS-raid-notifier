@@ -1,4 +1,4 @@
-Nutzung auf eigene Gefahr, da der Bot noch in entwicklung ist, können sich benötigte Rechte noch ändern.
+Nutzung auf eigene Gefahr, da der Bot noch in Entwicklung ist, können sich benötigte Rechte noch ändern.
 den Link passe ich dann an:
 [Einfach hier klicken](https://discord.com/oauth2/authorize?client_id=1353782807318499348&permissions=551903313920&integration_type=0&scope=bot)
 

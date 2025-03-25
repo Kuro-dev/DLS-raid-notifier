@@ -13,7 +13,6 @@ import net.dv8tion.jda.api.interactions.components.selections.StringSelectMenu;
 import org.jetbrains.annotations.NotNull;
 import org.kurodev.Main;
 import org.kurodev.data.MentionService;
-import org.kurodev.data.UserService;
 import org.kurodev.data.entity.server.ServerRole;
 import org.kurodev.discord.command.AbstractDiscordCommandImpl;
 import org.kurodev.discord.command.AutoRegister;
@@ -26,7 +25,6 @@ import java.util.List;
  */
 @AutoRegister
 public class NotificationAdminCommand extends AbstractDiscordCommandImpl {
-    private static final String EVENT_ADD_MODAL_ID = "event-name-input-modal";
     private static final String EVENT_ADD_SELECT_ID = "event-input-field";
 
     private static final String REMOVE_SELECT_ID = "event-entfernen-select-field";
@@ -73,7 +71,7 @@ public class NotificationAdminCommand extends AbstractDiscordCommandImpl {
     public void onButtonInteraction(@NotNull ButtonInteractionEvent event) {
         switch (event.getComponentId()) {
             case ADD_BUTTON_ID -> handleAddNewEvent(event);
-            case REMOVE_BUTTON_ID -> handleRemoval(event, event.getGuild());
+            case REMOVE_BUTTON_ID -> handleRemoval(event);
         }
     }
 
@@ -102,15 +100,15 @@ public class NotificationAdminCommand extends AbstractDiscordCommandImpl {
     /**
      * Message embed aufbauen für das Entfernen von Rollen.
      */
-    private void handleRemoval(ButtonInteractionEvent event, Guild guild) {
-        MessageEmbed embed = new EmbedBuilder()
-                .setTitle("Rollen entfernen:")
-                .build();
+    private void handleRemoval(ButtonInteractionEvent event) {
+        final Guild guild = event.getGuild();
+
+        MessageEmbed embed = new EmbedBuilder().setTitle("Rollen entfernen:").build();
 
         StringSelectMenu.Builder menu = StringSelectMenu.create(REMOVE_SELECT_ID);
-        mentionService.getServerRoleOptions(guild.getIdLong()).forEach(serverRole -> {
-            menu.addOption(serverRole.getName(), String.valueOf(serverRole.getId()));
-        });
+        mentionService.getServerRoleOptions(guild.getIdLong())
+                .forEach(serverRole -> menu.addOption(serverRole.getName(), String.valueOf(serverRole.getId())));
+
         menu.setMinValues(1);
         menu.setMaxValues(Math.min(guild.getRoles().size(), 25));
 
